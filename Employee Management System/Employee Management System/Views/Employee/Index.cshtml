@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Employee>
+
+
+@{
+ ViewData["Title"] = "Index";
+}
+    <h1>Çalışan Sayfası</h1>
+    <hr />
+   
+        <p class="d-flex justify-content-between">
+            @if(User.IsInRole("Create"))
+            {
+                <a asp-controller="Employee" asp-action="Create" class="btn btn-outline-success">Yeni Çalışan Oluştur</a>
+            }         
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Ana Sayfaya Dön</a>
+        </p>
+    
+    
+        <table class="table">
+     <thead>
+         <tr>
+             <th>
+                <h3>İsim</h3>
+             </th>
+             <th>
+                <h3>Soyisim</h3>
+            </th>
+             <th>
+                <h3>Departman</h3>
+            </th>
+             <th>
+                <h3>Maaş</h3>
+            </th>
+             <th></th>
+         </tr>
+     </thead>
+     <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @if (User.IsInRole("Read"))
+                        {
+                            <a asp-controller="Employee" asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                        }
+                        @if (User.IsInRole("Update"))
+                        {
+                        <a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                        }
+                        @if (User.IsInRole("Delete"))
+                        {
+                            <a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        }                       
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+﻿@using Employee_Management_System.ViewModel
+@model LoginViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<body class="text-center">
+
+    <main class="form-signin mx-auto" style="max-width: 400px">
+        <p>
+            <h4>Personel Yönetim Sistemine hoşgeldiniz</h4>
+            <h5 class="h3 mb-3 fw-normal">Lütfen giriş yapınız</h5>
+        </p>
+        
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="col-md-12 alert alert-danger">
+                <span><b>Sorry!</b> - @TempData["Error"]</span>
+            </div>
+        }
+
+        <form asp-action="Login" class="w-100">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="EmailAddress" class="form-control" placeholder="name@example.com">
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <input asp-for="Password" class="form-control" placeholder="Şifre" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-1 row">
+
+                <div class="col">
+                    <input class="btn btn-outline-success float right w-100" type="submit" value="Log in" />
+                </div>
+                <div class="col">
+                    <a class="btn btn-outline-secondary w-100" asp-controller="Home" asp-action="Index">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+
+
+
+

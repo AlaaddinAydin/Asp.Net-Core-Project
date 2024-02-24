@@ -1,0 +1,26 @@
+﻿@using Employee_Management_System.ViewModel
+@model List<AssingRoleViewModel>
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<form method="post">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <div class="form-check">
+            <input type="hidden" asp-for="@Model[i].RoleId" />
+            <input type="hidden" asp-for="@Model[i].Name" />
+            <input type="checkbox" asp-for="@Model[i].Exists" class="form-check-input" />
+            <label class="form-check-label">@Model[i].Name</label>
+        </div>
+    }
+
+    <a asp-controller="UserRole" asp-action="Index" class="btn btn-outline-secondary"> Geri Dön</a>
+    <button type="submit" class="btn btn-primary mt-1">Submit</button>
+</form>
+

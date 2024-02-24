@@ -1,0 +1,30 @@
+﻿@model Department
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" asp-action="Delete" enctype="multipart/form-data">
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="col-md-12 alert alert-danger">
+            <span><b>Sorry!</b> - @TempData["Error"]</span>
+        </div>
+    }
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="DepartmentName">Name</label>
+        <input asp-for="DepartmentName" class="form-control" placeholder="Name" readonly>
+        <span asp-validation-for="DepartmentName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <form action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Confirm" class="btn btn-danger float-right mt-3" />
+        </form>
+    </div>
+</form>

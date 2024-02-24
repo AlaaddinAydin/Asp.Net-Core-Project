@@ -1,0 +1,36 @@
+﻿
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Personel Yönetim Sistemi</h1>
+            <p class="lead text-body-secondary">Çalışanlarını özgürce kontrol et.</p>
+
+            @if(User.Identity.IsAuthenticated)
+            {
+                <p>Hoşgeldiniz. @User.Identity.Name.</p>
+            }
+            <p>
+                @if(!User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="Account" asp-action="Login" asp class="btn btn-primary my-2">Giriş Yap</a>
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-primary my-2">Kayıt Ol</a>
+                }
+                else if(User.Identity.IsAuthenticated &&  User.IsInRole("admin"))
+                {
+                    <a asp-controller="Employee" asp-action="Index" asp class="btn btn-primary my-2">Çalışanlar Sayfasına Gider</a>
+                    <a asp-controller="Department" asp-action="Index" asp class="btn btn-primary my-2">Departmanlar Sayfasına Gider</a>
+                }
+                else if(User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="Employee" asp-action="Index" asp class="btn btn-primary my-2">Çalışanlar Sayfasına Gider</a>
+                }
+     
+            </p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<IdentityRole>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Role Sayfası</h1>
+<hr />
+
+@if (User.IsInRole("admin"))
+{
+    <p class="d-flex justify-content-between" >
+        <a asp-controller="Role" asp-action="Create" class="btn btn-outline-success">Yeni Role Oluştur</a>
+        <a asp-controller="UserRole" asp-action="Index" class="btn btn-outline-secondary">Geri Dön</a>
+    </p>
+    
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h3>Id</h3>
+            </th>
+            <th>
+                <h3>İsim</h3>
+            </th>
+            <th>
+                <h3>Düzeltilmiş İsim</h3>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NormalizedName)
+                </td>              
+                <td>                                   
+                        <a asp-controller="Role" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-controller="Role" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

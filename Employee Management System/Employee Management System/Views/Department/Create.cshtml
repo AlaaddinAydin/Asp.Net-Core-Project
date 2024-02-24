@@ -1,0 +1,17 @@
+﻿@model Department
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="DepartmentName">Departman İsmi</label>
+        <input asp-for="DepartmentName" class="form-control" placeholder="Departman İsmi">
+        <span asp-validation-for="DepartmentName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-1">Submit</button>
+</form>

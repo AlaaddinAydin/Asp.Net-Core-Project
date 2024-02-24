@@ -1,0 +1,43 @@
+﻿@model Employee
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Çalışan Çıkarma Sayfası</h1>
+<hr />
+
+<form method="post" asp-action="Delete" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" value="departmentId" id="departmentId" />
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" placeholder="Name" readonly>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Surname">Surname</label>
+        <input asp-for="Surname" class="form-control" placeholder="Surname" readonly>
+        <span asp-validation-for="Surname" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" class="form-control" placeholder="Image" readonly>
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Salary">Salary</label>
+        <input asp-for="Salary" class="form-control" placeholder="Salary" readonly>
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <form action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="departmentId" />
+            <input type="submit" value="Confirm" class="btn btn-danger float-right mt-3" />
+        </form>
+    </div>
+</form>

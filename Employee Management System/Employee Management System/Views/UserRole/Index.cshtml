@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AppUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Kullanıcı Rol Sayfası</h1>
+<hr />
+
+<p class="d-flex justify-content-between">
+    <a asp-controller="Role" asp-action="Index" class="btn btn-outline-success">Rol Sayfasına Git</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Ana Sayfaya Dön</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h3>Kullanıcı</h3>
+            </th>
+            <th>
+                <h3>Rol Ata</h3>
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>          
+                <td>                                   
+                        <a asp-controller="UserRole" asp-action="Assign" asp-route-id="@item.Id">Rol Ata</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

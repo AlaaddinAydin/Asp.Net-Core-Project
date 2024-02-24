@@ -1,0 +1,35 @@
+﻿@model Employee
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">@Model.Name @Model.Surname</h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="@Model.Image" alt="Emplooye's personal image"> 
+        </div>
+
+        <div class="col-md-4">
+             <h3 class="my-3">İsim Soyisim</h3>
+            <p>@Model.Name  @Model.Surname</p> 
+            <h3 class="my-3">Departman</h3>
+            <p>@Model.Department.DepartmentName</p>
+            <h3 class="my-3">Maaş</h3>
+            <p>@Model.Salary</p>
+        </div>
+
+    </div>
+    
+</div>
+<!-- /.container -->
